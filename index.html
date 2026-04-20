@@ -1166,33 +1166,69 @@ footer {
 .store-badge .sb-large { font-size: 17px; font-weight: 600; color: #fff; }
 .store-badge .sb-text { display: flex; flex-direction: column; text-align: left; }
 
-/* Security & Trust */
+/* Security & Trust — compliance logo strip */
 .security { padding: 120px 0; }
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 auto 28px;
 }
-.trust-badge {
-  padding: 28px 22px;
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 100px;
   background: rgba(255,255,255,0.02);
-  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
 }
-.trust-badge .ic {
-  width: 44px; height: 44px; margin: 0 auto 16px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
+.trust-pill:hover {
+  border-color: var(--line-2);
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-1px);
+}
+.trust-pill svg {
+  width: 16px; height: 16px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+.trust-stripe {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  color: var(--text-dim);
+  padding: 2px 7px;
   border: 1px solid var(--line-2);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--green);
+  border-radius: 5px;
+  line-height: 1;
 }
-.trust-badge .ic svg { width: 22px; height: 22px; }
-.trust-badge h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; color: #fff; }
-.trust-badge p { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.trust-subline {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: var(--text-dim);
+  letter-spacing: 0.005em;
+}
+.trust-subline a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.4);
+  transition: text-decoration-color 0.2s ease;
+}
+.trust-subline a:hover { text-decoration-color: #fff; }
 
 /* Legal */
 .legal { padding: 100px 0; border-top: 1px solid var(--line); }
@@ -1949,6 +1985,20 @@ footer {
 }
 .foot-col a:hover { color: var(--text); }
 
+.foot-legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.foot-legal a {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.foot-legal a:hover { color: #fff; }
+
 .foot-bottom {
   margin-top: 60px;
   padding-top: 28px;
@@ -1956,6 +2006,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
   font-size: 12px;
   color: var(--text-mute);
@@ -2788,38 +2839,33 @@ footer {
       <h2 class="section-title" id="security-title">Your scans,<br><span class="serif">locked tight.</span></h2>
       <p class="section-sub">Body data is private by design. End-to-end encrypted, processed locally by default, and never used to train models without explicit consent.</p>
     </div>
-    <div class="trust-grid reveal">
-      <article class="trust-badge">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>SSL / TLS 1.3</h4>
-        <p>Every request encrypted end-to-end. A+ on SSL Labs.</p>
-      </article>
-      <article class="trust-badge">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <h4>AES-256 at rest</h4>
-        <p>Scans and portfolios encrypted with per-artist keys.</p>
-      </article>
-      <article class="trust-badge">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>GDPR &amp; CCPA</h4>
-        <p>Full data portability, revocable consent, one-click deletion.</p>
-      </article>
-      <article class="trust-badge">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6"/><path d="M14 17l3 3 5-5"/></svg></div>
-        <h4>SOC 2 (in progress)</h4>
-        <p>Type I audit scheduled for Q3 2026. Type II following.</p>
-      </article>
-      <article class="trust-badge">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 15h4"/></svg></div>
-        <h4>Stripe-secure payments</h4>
-        <p>PCI-DSS compliant. Card details never touch our servers.</p>
-      </article>
-      <article class="trust-badge">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <h4>No model training</h4>
-        <p>We never train foundation models on identifiable body data.</p>
-      </article>
+    <div class="trust-strip reveal" role="list" aria-label="Security & compliance">
+      <div class="trust-pill" role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>SSL&nbsp;/&nbsp;TLS 1.3</span>
+      </div>
+      <div class="trust-pill" role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <span>AES-256</span>
+      </div>
+      <div class="trust-pill" role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        <span>GDPR&nbsp;/&nbsp;CCPA</span>
+      </div>
+      <div class="trust-pill" role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12l4 4 12-12"/><path d="M20 4v8"/></svg>
+        <span>SOC 2</span>
+      </div>
+      <div class="trust-pill" role="listitem">
+        <span class="trust-stripe" aria-hidden="true">stripe</span>
+        <span>PCI-DSS</span>
+      </div>
+      <div class="trust-pill" role="listitem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg>
+        <span>No AI training</span>
+      </div>
     </div>
+    <p class="trust-subline reveal">Audited, encrypted end-to-end, and stored in EU regions by default. <a href="/privacy.html">Read the privacy policy →</a></p>
   </div>
 </section>
 <section class="final-cta" aria-labelledby="final-title">
@@ -2836,52 +2882,6 @@ footer {
 </section>
 
 </main>
-
-<!-- ============== LEGAL ============== -->
-<section class="legal" id="legal" aria-labelledby="legal-title">
-  <div class="container legal-wrap">
-    <div class="section-header reveal" style="margin-bottom:48px;text-align:left">
-      <h2 class="section-title" id="legal-title" style="text-align:left">The fine print.</h2>
-      <p class="section-sub" style="text-align:left">Short summaries below. For full documents and audit reports, email <a href="mailto:legal@octavire.com" style="color:#fff;text-decoration:underline">legal@octavire.com</a>.</p>
-    </div>
-
-    <article class="legal-article" id="terms">
-      <h3>Terms &amp; Conditions</h3>
-      <p>By using OCTAVIRE you agree to our service terms. Accounts are personal, non-transferable, and must be used in compliance with local tattoo licensing laws. We reserve the right to suspend accounts engaged in prohibited activities (impersonation, copyright infringement, harassment). Beta access is granted at our discretion and may change before general availability.</p>
-      <div class="legal-meta">Last updated: April 2026</div>
-    </article>
-
-    <article class="legal-article" id="privacy">
-      <h3>Privacy Policy</h3>
-      <p>We collect only what's needed to run the product: account info, portfolio content you upload, body-scan data you explicitly capture, and usage telemetry. Body scans are processed on-device by default. Nothing is sold to third parties. You can export or delete all your data at any time.</p>
-      <div class="legal-meta">Last updated: April 2026</div>
-    </article>
-
-    <article class="legal-article" id="cookies">
-      <h3>Cookie Policy</h3>
-      <p>We use strictly-necessary cookies (session, security, language) and — with your consent — anonymous analytics to improve the product. No advertising cookies, ever. You can change your preferences any time from the cookie banner or account settings.</p>
-      <div class="legal-meta">Last updated: April 2026</div>
-    </article>
-
-    <article class="legal-article" id="refund">
-      <h3>Refund Policy</h3>
-      <p>Pro subscriptions include a 14-day trial — cancel any time before it ends and you won't be billed. After billing, we offer full refunds within 30 days, no questions asked, for monthly subscriptions. Annual plans are pro-rated. Enterprise refunds follow the terms of your MSA.</p>
-      <div class="legal-meta">Last updated: April 2026</div>
-    </article>
-
-    <article class="legal-article" id="gdpr">
-      <h3>GDPR Compliance</h3>
-      <p>OCTAVIRE acts as Data Controller for its customers' account data and Data Processor for content uploaded through the product. We support all GDPR rights (access, rectification, erasure, portability, objection) and sign a Data Processing Agreement with enterprise customers on request. Our EU operations are based in Rotterdam, NL; data is stored in EU regions by default.</p>
-      <div class="legal-meta">Last updated: April 2026</div>
-    </article>
-
-    <article class="legal-article" id="data-deletion">
-      <h3>Data Deletion Request</h3>
-      <p>You can delete your account and all associated data directly from Settings → Account → Delete, or by emailing <a href="mailto:privacy@octavire.com" style="color:#fff;text-decoration:underline">privacy@octavire.com</a>. Deletion is irreversible and completes within 30 days across all systems and backups. A signed confirmation is emailed once complete.</p>
-      <div class="legal-meta">Last updated: April 2026</div>
-    </article>
-  </div>
-</section>
 
 <footer role="contentinfo">
   <div class="container">
@@ -2919,21 +2919,13 @@ footer {
           <li><a href="mailto:hello@octavire.com">Careers</a></li>
         </ul>
       </div>
-      <div class="foot-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#privacy">Privacy Policy</a></li>
-          <li><a href="#terms">Terms &amp; Conditions</a></li>
-          <li><a href="#cookies">Cookie Policy</a></li>
-          <li><a href="#refund">Refund Policy</a></li>
-          <li><a href="#gdpr">GDPR</a></li>
-          <li><a href="#data-deletion">Data Deletion</a></li>
-        </ul>
-      </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 OCTAVIRE &middot; Built for the craft.</span>
-      <span>octavire.com</span>
+      <nav class="foot-legal" aria-label="Legal">
+        <a href="/terms.html">Terms &amp; Conditions</a>
+        <a href="/privacy.html">Privacy Policy</a>
+      </nav>
     </div>
   </div>
 </footer>
