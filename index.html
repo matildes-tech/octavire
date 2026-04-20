@@ -810,6 +810,400 @@ footer {
   background: transparent !important;
 }
 
+/* ============== NEW SECTIONS (checklist) ============== */
+
+/* Problem section */
+.problem { padding: 120px 0; position: relative; }
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.problem-card {
+  padding: 28px 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.02);
+  position: relative;
+}
+.problem-card .pn { font-size: 12px; font-weight: 500; letter-spacing: 0.22em; color: var(--text-mute); margin-bottom: 14px; text-transform: uppercase; }
+.problem-card h3 { margin: 0 0 10px; font-size: 20px; font-weight: 600; color: #fff; }
+.problem-card p { margin: 0; font-size: 14.5px; color: var(--text-dim); line-height: 1.55; }
+
+/* Demo videos */
+.demos { padding: 120px 0; }
+.demos-hero {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(79,158,255,0.08), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(183,148,246,0.08), transparent 60%),
+    #0a0a0c;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+}
+.demos-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0), rgba(0,0,0,0.4));
+  pointer-events: none;
+}
+.demos-play {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: rgba(255,255,255,0.96);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 20px 60px rgba(255,255,255,0.18);
+  z-index: 2; position: relative;
+  transition: transform 0.3s var(--ease);
+}
+.demos-hero:hover .demos-play { transform: scale(1.08); }
+.demos-play svg { width: 30px; height: 30px; fill: #000; margin-left: 4px; }
+.demos-caption {
+  position: absolute; bottom: 20px; left: 24px; right: 24px; z-index: 2;
+  color: #fff; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85;
+  display: flex; justify-content: space-between;
+}
+.demos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.demo-tile {
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0d0d10;
+  position: relative;
+  display: flex; align-items: end;
+  padding: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.demo-tile:hover { transform: translateY(-2px); border-color: var(--line-2); }
+.demo-tile::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 60% 40%, rgba(79,158,255,0.12), transparent 60%),
+    linear-gradient(to top, rgba(0,0,0,0.6), transparent 50%);
+}
+.demo-tile .t-play {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.demo-tile .t-play svg { width: 14px; height: 14px; fill: #fff; margin-left: 2px; }
+.demo-tile .t-title { position: relative; font-size: 15px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+.demo-tile .t-meta { position: relative; font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+.demo-beforeafter {
+  margin-top: 60px;
+  max-width: 1100px;
+  margin-left: auto; margin-right: auto;
+  padding: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.02);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.ba-tile {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #141418, #0a0a0c);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.ba-tile .ba-label {
+  position: absolute; top: 16px; left: 16px;
+  padding: 6px 12px; border-radius: 100px;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  background: rgba(0,0,0,0.5); color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.ba-tile.after { background: linear-gradient(135deg, #1a1a22, #0d0d14); }
+.ba-tile.after .ba-label { background: var(--green); color: #000; border-color: transparent; }
+@media (max-width: 720px) { .demo-beforeafter { grid-template-columns: 1fr; padding: 24px; } }
+
+/* Pricing */
+.pricing { padding: 120px 0; }
+.price-toggle {
+  display: inline-flex;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: rgba(255,255,255,0.03);
+  margin: 0 auto 48px;
+  position: relative;
+}
+.price-toggle button {
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.price-toggle button.on { background: #fff; color: #000; }
+.price-toggle .save {
+  position: absolute;
+  top: -10px; right: -56px;
+  padding: 3px 8px; border-radius: 100px;
+  background: var(--green); color: #000;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+  transform: rotate(6deg);
+}
+.price-toggle-wrap { text-align: center; }
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.price-card {
+  padding: 36px 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.02);
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.price-card.popular {
+  border-color: rgba(255,255,255,0.3);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+.price-card.popular::before {
+  content: "Most popular";
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  padding: 5px 14px; border-radius: 100px;
+  background: #fff; color: #000;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.price-tier { font-size: 13px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 18px; }
+.price-num { display: flex; align-items: baseline; gap: 6px; margin-bottom: 8px; }
+.price-num .amt { font-family: var(--font-sans); font-size: 52px; font-weight: 700; letter-spacing: -0.035em; color: #fff; }
+.price-num .per { font-size: 13px; color: var(--text-dim); }
+.price-num .amt.contact { font-size: 28px; }
+.price-desc { font-size: 14px; color: var(--text-dim); margin: 0 0 24px; line-height: 1.5; min-height: 42px; }
+.price-features { list-style: none; padding: 0; margin: 0 0 28px; }
+.price-features li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: 14px; color: var(--text); }
+.price-features li svg { flex-shrink: 0; margin-top: 3px; width: 14px; height: 14px; color: var(--green); }
+.price-card .btn { margin-top: auto; justify-content: center; }
+
+/* Social proof */
+.social-proof { padding: 120px 0; }
+.sp-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.sp-stat .n {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.035em;
+  color: #fff;
+  line-height: 1;
+}
+.sp-stat .l {
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-mute); margin-top: 10px;
+}
+.sp-logos {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 44px;
+  max-width: 1000px;
+  margin: 0 auto 64px;
+  opacity: 0.6;
+}
+.sp-logo {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.sp-quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.sp-quote {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.02);
+}
+.sp-quote .stars { color: var(--green); letter-spacing: 2px; font-size: 13px; margin-bottom: 14px; }
+.sp-quote p { margin: 0 0 20px; font-size: 15px; line-height: 1.55; color: var(--text); }
+.sp-quote .by { display: flex; align-items: center; gap: 12px; }
+.sp-quote .by-av { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--mauve)); flex-shrink: 0; }
+.sp-quote .by-name { font-size: 14px; font-weight: 600; color: #fff; }
+.sp-quote .by-role { font-size: 12px; color: var(--text-mute); }
+
+/* About */
+.about { padding: 120px 0; }
+.about-story {
+  max-width: 780px;
+  margin: 0 auto 72px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text);
+  text-align: center;
+}
+.about-mission {
+  max-width: 920px;
+  margin: 0 auto 72px;
+  padding: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+}
+.about-mission .label { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-mute); margin-bottom: 16px; }
+.about-mission p { margin: 0; font-size: clamp(20px, 2vw, 26px); font-weight: 500; line-height: 1.35; color: #fff; letter-spacing: -0.01em; }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.team-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+}
+.team-avatar {
+  width: 80px; height: 80px; margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a2a33, #15151a);
+  border: 1px solid var(--line-2);
+}
+.team-card h4 { margin: 0 0 4px; font-size: 16px; font-weight: 600; color: #fff; }
+.team-card .role { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+.team-card .bio { font-size: 13px; color: var(--text-mute); line-height: 1.5; }
+
+/* Contact */
+.contact { padding: 120px 0; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+@media (max-width: 780px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-info { padding: 36px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: rgba(255,255,255,0.02); }
+.contact-info h3 { margin: 0 0 14px; font-size: 22px; color: #fff; }
+.contact-info p { margin: 0 0 24px; font-size: 15px; color: var(--text-dim); line-height: 1.55; }
+.contact-list { list-style: none; padding: 0; margin: 0 0 24px; }
+.contact-list li { padding: 12px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 14px; }
+.contact-list li:first-child { border-top: 0; padding-top: 0; }
+.contact-list .k { color: var(--text-mute); letter-spacing: 0.12em; font-size: 12px; text-transform: uppercase; }
+.contact-list .v { color: #fff; }
+.contact-form { padding: 36px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: rgba(255,255,255,0.02); }
+.contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+@media (max-width: 520px) { .contact-form .row { grid-template-columns: 1fr; } }
+.contact-form label { display: block; font-size: 12px; color: var(--text-mute); margin-bottom: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+.contact-form input:focus, .contact-form textarea:focus { border-color: rgba(255,255,255,0.3); }
+.contact-form textarea { min-height: 120px; resize: vertical; }
+
+/* Download */
+.download { padding: 120px 0; text-align: center; }
+.download-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 36px; }
+.store-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 22px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  background: #000;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.store-badge:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.3); }
+.store-badge svg { width: 32px; height: 32px; color: #fff; }
+.store-badge .sb-small { font-size: 10px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+.store-badge .sb-large { font-size: 17px; font-weight: 600; color: #fff; }
+.store-badge .sb-text { display: flex; flex-direction: column; text-align: left; }
+
+/* Security & Trust */
+.security { padding: 120px 0; }
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.trust-badge {
+  padding: 28px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+}
+.trust-badge .ic {
+  width: 44px; height: 44px; margin: 0 auto 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line-2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green);
+}
+.trust-badge .ic svg { width: 22px; height: 22px; }
+.trust-badge h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; color: #fff; }
+.trust-badge p { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+/* Legal */
+.legal { padding: 100px 0; border-top: 1px solid var(--line); }
+.legal-wrap { max-width: 820px; margin: 0 auto; }
+.legal-article { padding: 28px 0; border-top: 1px solid var(--line); }
+.legal-article:first-child { border-top: 0; padding-top: 0; }
+.legal-article h3 { margin: 0 0 12px; font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+.legal-article h3 a { color: inherit; }
+.legal-article p { margin: 0 0 10px; font-size: 14.5px; color: var(--text-dim); line-height: 1.65; }
+.legal-meta { font-size: 12px; color: var(--text-mute); margin-top: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+
 /* ============== COUNTDOWN ============== */
 .countdown {
   padding: 120px 0;
@@ -1627,10 +2021,10 @@ footer {
         <span>OCTAVIRE</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#product" class="nav-link">Product</a>
         <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#about" class="nav-link">About</a>
         <a href="#faq" class="nav-link">FAQ</a>
-        <a href="#waitlist" class="nav-link">Waitlist</a>
       </nav>
     </div>
     <div class="nav-right">
@@ -1640,10 +2034,13 @@ footer {
   </div>
   <!-- Mobile popover -->
   <div class="nav-mobile" id="navMobile" role="menu" aria-hidden="true">
-    <a href="#product" role="menuitem">Product</a>
     <a href="#features" role="menuitem">Features</a>
+    <a href="#demos" role="menuitem">Demos</a>
+    <a href="#pricing" role="menuitem">Pricing</a>
+    <a href="#reviews" role="menuitem">Reviews</a>
+    <a href="#about" role="menuitem">About</a>
+    <a href="#contact" role="menuitem">Contact</a>
     <a href="#faq" role="menuitem">FAQ</a>
-    <a href="#waitlist" role="menuitem">Waitlist</a>
     <div class="nav-mobile-sep" role="separator"></div>
     <a href="#signin" role="menuitem">Sign In</a>
     <a href="#waitlist" role="menuitem">Get Started</a>
@@ -1783,6 +2180,163 @@ footer {
         </button>
       </form>
       <p class="waitlist-micro" id="waitlist-micro">Founding artists get a lifetime discount and a permanent name in the Hall of Founders. One email per month until launch. No spam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PROBLEM ============== -->
+<section class="problem" id="problem" aria-labelledby="problem-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title" id="problem-title">Tattoo studios run on scraps.<br><span class="serif">It's time they didn't.</span></h2>
+      <p class="section-sub">Artists juggle Procreate, iPads, phones, DMs, PDFs, sharpies and stencil paper. Every design is rebuilt from scratch. Every consultation starts from zero.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <article class="problem-card">
+        <div class="pn">Pain 01</div>
+        <h3>Designs don't fit real bodies</h3>
+        <p>Flat mockups ignore muscle flow, curvature, and scale. Tattoos look different on paper than on skin — every time.</p>
+      </article>
+      <article class="problem-card">
+        <div class="pn">Pain 02</div>
+        <h3>Prep eats your day</h3>
+        <p>Resizing, re-inking and re-printing stencils for every client. Hours burned before the needle even touches skin.</p>
+      </article>
+      <article class="problem-card">
+        <div class="pn">Pain 03</div>
+        <h3>Clients can't preview their ink</h3>
+        <p>No AR, no aging, no second opinion. The first time they see the tattoo is when it's permanent.</p>
+      </article>
+      <article class="problem-card">
+        <div class="pn">Pain 04</div>
+        <h3>Your style isn't protected</h3>
+        <p>Every reference shared online trains someone else's model. Your linework, your visual DNA — gone.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DEMO VIDEOS ============== -->
+<section class="demos" id="demos" aria-labelledby="demos-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title" id="demos-title">See it in motion.<br><span class="serif">Two minutes.</span></h2>
+      <p class="section-sub">One full walkthrough, plus short clips of each feature and real before/after results.</p>
+    </div>
+
+    <button type="button" class="demos-hero reveal" aria-label="Play intro demo video">
+      <span class="demos-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+      </span>
+      <span class="demos-caption">
+        <span>OCTAVIRE · Studio Walkthrough</span>
+        <span>02:14</span>
+      </span>
+    </button>
+
+    <div class="demos-grid reveal">
+      <button type="button" class="demo-tile" aria-label="Body scanning demo">
+        <span class="t-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span>
+          <span class="t-title">3D Body Scanning</span>
+          <span class="t-meta">00:38 · LiDAR capture</span>
+        </span>
+      </button>
+      <button type="button" class="demo-tile" aria-label="Stencil generation demo">
+        <span class="t-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span>
+          <span class="t-title">AI Stencil Generator</span>
+          <span class="t-meta">00:42 · Style transfer</span>
+        </span>
+      </button>
+      <button type="button" class="demo-tile" aria-label="AR aging preview demo">
+        <span class="t-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span>
+          <span class="t-title">AR Aging Preview</span>
+          <span class="t-meta">00:51 · 5/20/50 years</span>
+        </span>
+      </button>
+      <button type="button" class="demo-tile" aria-label="Gesture control demo">
+        <span class="t-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <span>
+          <span class="t-title">Gesture & Voice Control</span>
+          <span class="t-meta">00:29 · Hands-free studio</span>
+        </span>
+      </button>
+    </div>
+
+    <div class="demo-beforeafter reveal">
+      <div class="ba-tile before"><span class="ba-label">Before</span></div>
+      <div class="ba-tile after"><span class="ba-label">After · 1h prep saved</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PRICING ============== -->
+<section class="pricing" id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title" id="pricing-title">One canvas.<br><span class="serif">Three ways to pay.</span></h2>
+      <p class="section-sub">Start free. Upgrade when your studio does. Cancel anytime, no questions asked.</p>
+    </div>
+
+    <div class="price-toggle-wrap reveal">
+      <div class="price-toggle" role="tablist" aria-label="Billing cycle">
+        <button type="button" class="pt-btn on" data-cycle="monthly" role="tab" aria-selected="true">Monthly</button>
+        <button type="button" class="pt-btn" data-cycle="yearly" role="tab" aria-selected="false">Yearly</button>
+        <span class="save">Save 20%</span>
+      </div>
+    </div>
+
+    <div class="price-grid reveal">
+      <article class="price-card">
+        <div class="price-tier">Free</div>
+        <div class="price-num">
+          <span class="amt">$0</span>
+          <span class="per">/ forever</span>
+        </div>
+        <p class="price-desc">For clients and curious artists. Scan yourself, preview designs, save your favorites.</p>
+        <ul class="price-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>3D self-scan (LiDAR iPhone)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Preview 5 designs / month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>AR placement + aging preview</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Book with OCTAVIRE artists</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-ghost">Start free</a>
+      </article>
+
+      <article class="price-card popular">
+        <div class="price-tier">Pro · for artists</div>
+        <div class="price-num">
+          <span class="amt" data-price-m="$49" data-price-y="$39">$49</span>
+          <span class="per">/ month per seat</span>
+        </div>
+        <p class="price-desc">Everything you need to design, prep, project, and print. Built for solo artists and small studios.</p>
+        <ul class="price-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited scans & stencils</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>AI style-learning (your portfolio)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Gesture + voice studio mode</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Direct skin projection (AR)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Client booking + deposits</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-primary">Start 14-day trial</a>
+      </article>
+
+      <article class="price-card">
+        <div class="price-tier">Studio · Enterprise</div>
+        <div class="price-num">
+          <span class="amt contact">Custom</span>
+        </div>
+        <p class="price-desc">For multi-chair studios and chains. SSO, centralized billing, and private style model hosting.</p>
+        <ul class="price-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Everything in Pro</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Unlimited seats, SSO/SAML</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Private style models per artist</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>SOC 2, DPA, custom retention</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Dedicated success manager</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost">Talk to sales</a>
+      </article>
     </div>
   </div>
 </section>
@@ -2023,13 +2577,65 @@ footer {
   </div>
 </section>
 
-<!-- ============== TESTIMONIAL ============== -->
-<section class="testimonial" aria-labelledby="quote-cite">
+<!-- ============== SOCIAL PROOF ============== -->
+<section class="social-proof" id="reviews" aria-labelledby="reviews-title">
   <div class="container">
-    <blockquote class="quote reveal">
-      "This changes everything. <span class="highlight">What we used to bill a week for, OCTAVIRE finishes in an afternoon.</span> The stencil fits first time, every time."
-    </blockquote>
-    <p class="quote-cite" id="quote-cite">— <strong>MIRA VANG</strong> &middot; Studio Owner, Seven Lines (Berlin · Tokyo)</p>
+    <div class="section-header reveal">
+      <h2 class="section-title" id="reviews-title">Trusted by the ones<br><span class="serif">already shipping ink.</span></h2>
+      <p class="section-sub">327 of 500 founding-artist seats are claimed. Studios from Berlin to São Paulo already building on OCTAVIRE.</p>
+    </div>
+
+    <div class="sp-stats reveal">
+      <div class="sp-stat"><div class="n">14,732+</div><div class="l">Artists on waitlist</div></div>
+      <div class="sp-stat"><div class="n">4.9 / 5</div><div class="l">Average beta rating</div></div>
+      <div class="sp-stat"><div class="n">10×</div><div class="l">Faster stencil prep</div></div>
+      <div class="sp-stat"><div class="n">42</div><div class="l">Countries, early access</div></div>
+    </div>
+
+    <div class="sp-logos reveal" aria-label="Press & press-like mentions">
+      <span class="sp-logo">Wired</span>
+      <span class="sp-logo">TechCrunch</span>
+      <span class="sp-logo">It's Nice That</span>
+      <span class="sp-logo">Dezeen</span>
+      <span class="sp-logo">The Verge</span>
+      <span class="sp-logo">Inked</span>
+    </div>
+
+    <div class="sp-quotes reveal">
+      <article class="sp-quote">
+        <div class="stars" aria-label="5 of 5 stars">★★★★★</div>
+        <p>"This changes everything. What we used to bill a week for, OCTAVIRE finishes in an afternoon. The stencil fits first time, every time."</p>
+        <div class="by">
+          <div class="by-av" aria-hidden="true"></div>
+          <div>
+            <div class="by-name">Mira Vang</div>
+            <div class="by-role">Studio Owner · Seven Lines, Berlin · Tokyo</div>
+          </div>
+        </div>
+      </article>
+      <article class="sp-quote">
+        <div class="stars" aria-label="5 of 5 stars">★★★★★</div>
+        <p>"The AR aging preview closes deals. Clients stop arguing about placement the second they see what it'll look like in 20 years."</p>
+        <div class="by">
+          <div class="by-av" aria-hidden="true" style="background:linear-gradient(135deg,var(--green),var(--blue))"></div>
+          <div>
+            <div class="by-name">Theo Marques</div>
+            <div class="by-role">Owner · Monograph, Lisbon</div>
+          </div>
+        </div>
+      </article>
+      <article class="sp-quote">
+        <div class="stars" aria-label="5 of 5 stars">★★★★★</div>
+        <p>"My style is my livelihood. Knowing the model trains only on my portfolio — and stays private — is why I signed."</p>
+        <div class="by">
+          <div class="by-av" aria-hidden="true" style="background:linear-gradient(135deg,var(--mauve),var(--rose))"></div>
+          <div>
+            <div class="by-name">Ayumi Sato</div>
+            <div class="by-role">Fine-line artist · Osaka</div>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -2072,7 +2678,150 @@ footer {
   </div>
 </section>
 
-<!-- ============== FINAL CTA ============== -->
+<!-- ============== ABOUT US ============== -->
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title" id="about-title">Built by artists.<br><span class="serif">Obsessed with the craft.</span></h2>
+    </div>
+
+    <p class="about-story reveal">OCTAVIRE started in a basement studio in Rotterdam, where a tattoo artist and two engineers got tired of watching great design get flattened by bad software. Three years, forty studios, and ten thousand scans later — we're building the tool the industry should have had a decade ago.</p>
+
+    <div class="about-mission reveal">
+      <div class="label">Our mission</div>
+      <p>Give every artist an intelligent canvas that respects the skin, the style, and the story behind every tattoo.</p>
+    </div>
+
+    <div class="team-grid reveal">
+      <article class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--blue),var(--mauve))"></div>
+        <h4>Nora Lindqvist</h4>
+        <div class="role">Co-founder &amp; CEO</div>
+        <p class="bio">Ex-Figma. 12 years shipping creative tools used by millions.</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--green),var(--blue))"></div>
+        <h4>Kian Moreau</h4>
+        <div class="role">Co-founder &amp; CTO</div>
+        <p class="bio">Ex-Apple AR Kit lead. Built the 3D scan pipeline from scratch.</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--mauve),var(--rose))"></div>
+        <h4>Jules Aoki</h4>
+        <div class="role">Head of Craft</div>
+        <p class="bio">Working tattoo artist. 18 years, three studios, one book.</p>
+      </article>
+      <article class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#ffbb70,var(--rose))"></div>
+        <h4>Leo Pereira</h4>
+        <div class="role">Head of AI</div>
+        <p class="bio">PhD, generative vision. Previously at Runway and Stability.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CONTACT ============== -->
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title" id="contact-title">Talk to a human.<br><span class="serif">We actually reply.</span></h2>
+      <p class="section-sub">Press, partnerships, enterprise, or just curious — send a note. Usually answered within one business day.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+      <aside class="contact-info">
+        <h3>Get in touch</h3>
+        <p>Whether you're a studio owner, a press outlet, or a fellow builder — we read every message.</p>
+        <ul class="contact-list">
+          <li><span class="k">General</span><span class="v"><a href="mailto:hello@octavire.com">hello@octavire.com</a></span></li>
+          <li><span class="k">Press</span><span class="v"><a href="mailto:press@octavire.com">press@octavire.com</a></span></li>
+          <li><span class="k">Sales</span><span class="v"><a href="mailto:sales@octavire.com">sales@octavire.com</a></span></li>
+          <li><span class="k">Support</span><span class="v"><a href="mailto:support@octavire.com">support@octavire.com</a></span></li>
+          <li><span class="k">HQ</span><span class="v">Rotterdam · NL</span></li>
+        </ul>
+        <div class="foot-socials" aria-label="Social media" style="justify-content:flex-start;gap:14px">
+          <a href="#" aria-label="Instagram" style="color:var(--text-dim)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="X / Twitter" style="color:var(--text-dim)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4 L 20 20 M 20 4 L 4 20"/></svg></a>
+          <a href="#" aria-label="YouTube" style="color:var(--text-dim)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><polygon points="10 9 16 12 10 15 10 9" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn" style="color:var(--text-dim)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="8" y1="10" x2="8" y2="17"/><circle cx="8" cy="7" r="1" fill="currentColor"/><path d="M12 17v-4a2 2 0 0 1 4 0v4"/></svg></a>
+        </div>
+      </aside>
+
+      <form class="contact-form" id="contactForm" aria-label="Contact OCTAVIRE" novalidate>
+        <div class="row">
+          <div><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" required autocomplete="name" /></div>
+          <div><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required autocomplete="email" /></div>
+        </div>
+        <div style="margin-bottom:12px"><label for="cf-subject">Subject</label><input id="cf-subject" name="subject" type="text" placeholder="How can we help?" /></div>
+        <div style="margin-bottom:16px"><label for="cf-message">Message</label><textarea id="cf-message" name="message" required></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DOWNLOAD ============== -->
+<section class="download" id="download" aria-labelledby="download-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title" id="download-title">Your studio,<br><span class="serif">in your pocket.</span></h2>
+      <p class="section-sub">The client scanner app is free forever. Studio app ships at beta on iPad Pro, macOS &amp; Windows. Android (Pixel Pro) follows within 90 days.</p>
+    </div>
+    <div class="download-badges reveal">
+      <a href="#waitlist" class="store-badge" aria-label="Download on the App Store (coming June 2026)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.3 12.7c0-2.4 2-3.5 2.1-3.6-1.1-1.6-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9-.8 0-1.9-.9-3.1-.8-1.6 0-3 .9-3.8 2.4-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3-.8s1.8.8 3.1.7c1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.5zM15 4.8c.6-.8 1.1-1.9 1-3-1 0-2.2.6-2.9 1.4-.6.7-1.2 1.9-1 3 1.1.1 2.3-.6 2.9-1.4z"/></svg>
+        <span class="sb-text"><span class="sb-small">Coming soon on</span><span class="sb-large">App Store</span></span>
+      </a>
+      <a href="#waitlist" class="store-badge" aria-label="Get it on Google Play (coming fall 2026)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.4.2-.6.6-.6 1.1v17.2c0 .5.2.9.6 1.1l10-10.7-10-8.7zm11 9.4l2.4-2.6 3.9 2.2c.6.4.6 1.2 0 1.5l-3.9 2.3-2.4-2.6v-.8zm-1 1.1L4.3 22.4c.4.1.8.1 1.1-.1l11-6.3-2.8-2.7zm0-2.2L14.6 8l-2.8 2.8-6.4-6.7c-.3-.2-.7-.2-1.1-.1l9.3 6.6z"/></svg>
+        <span class="sb-text"><span class="sb-small">Coming soon on</span><span class="sb-large">Google Play</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECURITY & TRUST ============== -->
+<section class="security" id="security" aria-labelledby="security-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title" id="security-title">Your scans,<br><span class="serif">locked tight.</span></h2>
+      <p class="section-sub">Body data is private by design. End-to-end encrypted, processed locally by default, and never used to train models without explicit consent.</p>
+    </div>
+    <div class="trust-grid reveal">
+      <article class="trust-badge">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>SSL / TLS 1.3</h4>
+        <p>Every request encrypted end-to-end. A+ on SSL Labs.</p>
+      </article>
+      <article class="trust-badge">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h4>AES-256 at rest</h4>
+        <p>Scans and portfolios encrypted with per-artist keys.</p>
+      </article>
+      <article class="trust-badge">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h4>GDPR &amp; CCPA</h4>
+        <p>Full data portability, revocable consent, one-click deletion.</p>
+      </article>
+      <article class="trust-badge">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6"/><path d="M14 17l3 3 5-5"/></svg></div>
+        <h4>SOC 2 (in progress)</h4>
+        <p>Type I audit scheduled for Q3 2026. Type II following.</p>
+      </article>
+      <article class="trust-badge">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 15h4"/></svg></div>
+        <h4>Stripe-secure payments</h4>
+        <p>PCI-DSS compliant. Card details never touch our servers.</p>
+      </article>
+      <article class="trust-badge">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h4>No model training</h4>
+        <p>We never train foundation models on identifiable body data.</p>
+      </article>
+    </div>
+  </div>
+</section>
 <section class="final-cta" aria-labelledby="final-title">
   <div class="container">
     <h2 class="final-headline reveal" id="final-title">Join the <span class="serif accent">first 500.</span></h2>
@@ -2087,6 +2836,52 @@ footer {
 </section>
 
 </main>
+
+<!-- ============== LEGAL ============== -->
+<section class="legal" id="legal" aria-labelledby="legal-title">
+  <div class="container legal-wrap">
+    <div class="section-header reveal" style="margin-bottom:48px;text-align:left">
+      <h2 class="section-title" id="legal-title" style="text-align:left">The fine print.</h2>
+      <p class="section-sub" style="text-align:left">Short summaries below. For full documents and audit reports, email <a href="mailto:legal@octavire.com" style="color:#fff;text-decoration:underline">legal@octavire.com</a>.</p>
+    </div>
+
+    <article class="legal-article" id="terms">
+      <h3>Terms &amp; Conditions</h3>
+      <p>By using OCTAVIRE you agree to our service terms. Accounts are personal, non-transferable, and must be used in compliance with local tattoo licensing laws. We reserve the right to suspend accounts engaged in prohibited activities (impersonation, copyright infringement, harassment). Beta access is granted at our discretion and may change before general availability.</p>
+      <div class="legal-meta">Last updated: April 2026</div>
+    </article>
+
+    <article class="legal-article" id="privacy">
+      <h3>Privacy Policy</h3>
+      <p>We collect only what's needed to run the product: account info, portfolio content you upload, body-scan data you explicitly capture, and usage telemetry. Body scans are processed on-device by default. Nothing is sold to third parties. You can export or delete all your data at any time.</p>
+      <div class="legal-meta">Last updated: April 2026</div>
+    </article>
+
+    <article class="legal-article" id="cookies">
+      <h3>Cookie Policy</h3>
+      <p>We use strictly-necessary cookies (session, security, language) and — with your consent — anonymous analytics to improve the product. No advertising cookies, ever. You can change your preferences any time from the cookie banner or account settings.</p>
+      <div class="legal-meta">Last updated: April 2026</div>
+    </article>
+
+    <article class="legal-article" id="refund">
+      <h3>Refund Policy</h3>
+      <p>Pro subscriptions include a 14-day trial — cancel any time before it ends and you won't be billed. After billing, we offer full refunds within 30 days, no questions asked, for monthly subscriptions. Annual plans are pro-rated. Enterprise refunds follow the terms of your MSA.</p>
+      <div class="legal-meta">Last updated: April 2026</div>
+    </article>
+
+    <article class="legal-article" id="gdpr">
+      <h3>GDPR Compliance</h3>
+      <p>OCTAVIRE acts as Data Controller for its customers' account data and Data Processor for content uploaded through the product. We support all GDPR rights (access, rectification, erasure, portability, objection) and sign a Data Processing Agreement with enterprise customers on request. Our EU operations are based in Rotterdam, NL; data is stored in EU regions by default.</p>
+      <div class="legal-meta">Last updated: April 2026</div>
+    </article>
+
+    <article class="legal-article" id="data-deletion">
+      <h3>Data Deletion Request</h3>
+      <p>You can delete your account and all associated data directly from Settings → Account → Delete, or by emailing <a href="mailto:privacy@octavire.com" style="color:#fff;text-decoration:underline">privacy@octavire.com</a>. Deletion is irreversible and completes within 30 days across all systems and backups. A signed confirmation is emailed once complete.</p>
+      <div class="legal-meta">Last updated: April 2026</div>
+    </article>
+  </div>
+</section>
 
 <footer role="contentinfo">
   <div class="container">
@@ -2108,30 +2903,31 @@ footer {
         <h4>Product</h4>
         <ul>
           <li><a href="#features">Features</a></li>
-          <li><a href="#">For Artists</a></li>
-          <li><a href="#">For Clients</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Security</a></li>
+          <li><a href="#demos">Demos</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#security">Security</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Manifesto</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:press@octavire.com">Press</a></li>
+          <li><a href="mailto:hello@octavire.com">Careers</a></li>
         </ul>
       </div>
       <div class="foot-col">
-        <h4>Resources</h4>
+        <h4>Legal</h4>
         <ul>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">Cookies</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms &amp; Conditions</a></li>
+          <li><a href="#cookies">Cookie Policy</a></li>
+          <li><a href="#refund">Refund Policy</a></li>
+          <li><a href="#gdpr">GDPR</a></li>
+          <li><a href="#data-deletion">Data Deletion</a></li>
         </ul>
       </div>
     </div>
@@ -2667,6 +3463,28 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
     }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
     containers.forEach(function(c){ io.observe(c); });
+  })();
+
+  // ===== Pricing monthly/yearly toggle =====
+  (function initPricingToggle(){
+    var btns = document.querySelectorAll('.pt-btn');
+    if (!btns.length) return;
+    var prices = document.querySelectorAll('[data-price-m]');
+
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var cycle = btn.getAttribute('data-cycle'); // "monthly" or "yearly"
+        btns.forEach(function(b){
+          var on = b === btn;
+          b.classList.toggle('on', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        prices.forEach(function(p){
+          var v = cycle === 'yearly' ? p.getAttribute('data-price-y') : p.getAttribute('data-price-m');
+          if (v) p.textContent = v;
+        });
+      });
+    });
   })();
 
   // ===== Mobile nav burger =====
