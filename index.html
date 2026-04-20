@@ -573,6 +573,25 @@ h1.hero-title {
   color: #fff;
 }
 
+/* WhisperText (ported from React Bits) — per-word stagger reveal */
+.whisper .whisper-word {
+  display: inline-block;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-20px);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out);
+}
+.whisper .whisper-word.is-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .whisper .whisper-word { opacity: 1; transform: none; transition: none; }
+}
+
 .hero-sub {
   font-size: clamp(15px, 1.1vw, 18px);
   color: rgba(255,255,255,0.92);
@@ -727,7 +746,28 @@ h1.hero-title {
   z-index: 1;
 }
 
+.stack-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  pointer-events: none;
+  user-select: none;
+}
+.stack-card-inner::after {
+  /* dark gradient at the bottom so the label stays readable on any image */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  pointer-events: none;
+  border-radius: inherit;
+}
 .stack-card-label {
+  position: relative;          /* sits above the image & gradient */
   padding: 14px 16px;
   font-size: 13px;
   font-weight: 600;
@@ -735,6 +775,7 @@ h1.hero-title {
   letter-spacing: -0.01em;
   opacity: 0;
   transition: opacity 0.4s var(--ease-out);
+  z-index: 2;
 }
 .stack-card.is-active .stack-card-label { opacity: 1; }
 .stack-card.is-active {
@@ -1615,10 +1656,10 @@ footer {
 <section class="hero" aria-label="Hero introduction">
   <div class="hero-inner">
     <div class="hero-copy">
-      <h1 class="hero-title reveal">
-        Where ink<br />
-        becomes<br />
-        intelligence
+      <h1 class="hero-title whisper" data-whisper>
+        <span class="whisper-word">Where</span> <span class="whisper-word">ink</span><br />
+        <span class="whisper-word">becomes</span><br />
+        <span class="whisper-word">intelligence</span>
       </h1>
       <p class="hero-sub reveal">
         <strong>OCTAVIRE</strong> is the first end-to-end design<br />
@@ -1635,6 +1676,7 @@ footer {
           <span class="eb-background-glow"></span>
         </span>
         <span class="stack-card-inner">
+          <img class="stack-card-img" src="images/card-01.jpg" alt="" loading="lazy" />
           <span class="stack-card-label">Portraits</span>
         </span>
       </button>
@@ -1646,6 +1688,7 @@ footer {
           <span class="eb-background-glow"></span>
         </span>
         <span class="stack-card-inner">
+          <img class="stack-card-img" src="images/card-02.jpg" alt="" loading="lazy" />
           <span class="stack-card-label">Blackwork</span>
         </span>
       </button>
@@ -1657,6 +1700,7 @@ footer {
           <span class="eb-background-glow"></span>
         </span>
         <span class="stack-card-inner">
+          <img class="stack-card-img" src="images/card-03.jpg" alt="" loading="lazy" />
           <span class="stack-card-label">Fine line</span>
         </span>
       </button>
@@ -2588,6 +2632,41 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
       }
     }
     build();
+  })();
+
+  // ===== WhisperText (ported from React Bits) =====
+  (function initWhisper(){
+    var containers = document.querySelectorAll('[data-whisper]');
+    if (!containers.length) return;
+
+    var DEFAULTS = { delay: 100, triggerStart: 0.9 }; // delay ms between words; triggerStart = top X% of viewport
+
+    function play(container){
+      var words = container.querySelectorAll('.whisper-word');
+      if (reduce) {
+        words.forEach(function(w){ w.classList.add('is-in'); });
+        return;
+      }
+      words.forEach(function(w, i){
+        setTimeout(function(){ w.classList.add('is-in'); }, i * DEFAULTS.delay);
+      });
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      containers.forEach(play);
+      return;
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          play(entry.target);
+          io.unobserve(entry.target); // play once
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+    containers.forEach(function(c){ io.observe(c); });
   })();
 
   // ===== Mobile nav burger =====
